@@ -1,8 +1,8 @@
 $engine: 3
-name: PlumeESX
-version: 2.2.0
-author: Tabarra & Chip
-description: A full featured (13 jobs) and highly configurable yet lightweight ESX v1-final base that can be easily extended. 
+name: Vraxi
+version: 1.0
+author: Vraxi
+description: Vraxi
 
 tasks:
   # Download default CFX resources
@@ -12,23 +12,15 @@ tasks:
     subpath: resources
     dest: ./resources
   
-  # Download and prepare server.cfg / loadingscreen / database
+  # Download and prepare server.cfg / database
   - action: download_github
-    src: https://github.com/tabarra/PlumeESX-recipe
+    src: https://github.com/Vraxi/testrecipe
     ref: main
     dest: ./tmp/plume_esx
 
   - action: move_path
     src: ./tmp/plume_esx/server.cfg
     dest: ./server.cfg
-  
-  - action: move_path
-    src: ./tmp/plume_esx/default_spawnpoint
-    dest: ./resources/default_spawnpoint
-
-  - action: move_path
-    src: ./tmp/plume_esx/loadingscreen
-    dest: ./resources/loadingscreen
 
   - action: connect_database
   - action: query_database
@@ -263,9 +255,6 @@ tasks:
 
 
   ## Final touches
-  - action: replace_string
-    mode: all_vars
-    file: ./resources/loadingscreen/config.js
     
   - action: remove_path
     path: ./tmp
